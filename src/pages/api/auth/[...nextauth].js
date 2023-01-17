@@ -13,10 +13,8 @@ export const authOptions = {
       },
     })
   ],
-  callbacks: {
-    async redirect({ baseUrl }) {
-      return baseUrl
-    }
+  session: {
+    strategy: 'jwt'
   }
 }
 
