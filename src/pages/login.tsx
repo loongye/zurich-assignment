@@ -27,7 +27,7 @@ export default function Login() {
         {isAuthenticated ? (
           <>Redirecting to homepage</>
         ) : (
-          <button onClick={() => signIn("google", {callbackUrl: '/'})}>Login</button>
+          <button onClick={() => signIn("google", {callbackUrl: `${process.env.CALLBACK_URL}`})}>Login</button>
         )}
       </main>
       <Footer
