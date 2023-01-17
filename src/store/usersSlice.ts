@@ -28,7 +28,7 @@ interface Page {
 export const fetchAllUsers = createAsyncThunk("users/fetchAll", async () => {
   const data: User[] = [];
 
-  const response = await fetch("https://reqres.in/api/users");
+  const response = await fetch("/api/users");
   const firstPage = (await response.json()) as Page;
   const { total_pages } = firstPage;
 
@@ -39,7 +39,7 @@ export const fetchAllUsers = createAsyncThunk("users/fetchAll", async () => {
       Array(total_pages - 1)
         .fill(0)
         .map((_, index) =>
-          fetch(`https://reqres.in/api/users?page=${index + 2}`)
+          fetch(`/api/users?page=${index + 2}`)
         )
     );
     const pages = (await Promise.all(
