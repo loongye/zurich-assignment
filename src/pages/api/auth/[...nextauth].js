@@ -13,6 +13,11 @@ export const authOptions = {
       },
     })
   ],
+  callbacks: {
+    async redirect({ baseUrl }) {
+      return baseUrl
+    }
+  }
 }
 
 // if authorization is needed: https://next-auth.js.org/configuration/providers/oauth#authorization-option
