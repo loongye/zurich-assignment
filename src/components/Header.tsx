@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 interface IHeaderProps {
   title: string;
@@ -7,6 +7,8 @@ interface IHeaderProps {
 }
 
 export const Header: React.FC<IHeaderProps> = ({ title, description }) => {
+  const { status } = useSession();
+
   return (
     <>
       <Head>
@@ -16,7 +18,7 @@ export const Header: React.FC<IHeaderProps> = ({ title, description }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h2>{title}</h2>
-      <p>You are signed in. <button onClick={() => signOut()}>Sign Out</button></p>
+      {status === 'authenticated' ? <p>You are signed in. <button onClick={() => signOut()}>Sign Out</button></p> : null}
     </>
   );
 };
