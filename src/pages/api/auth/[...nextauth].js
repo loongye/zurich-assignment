@@ -15,6 +15,14 @@ export const authOptions = {
   ],
   session: {
     strategy: 'jwt'
+  },
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return true
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl
+    }
   }
 }
 
