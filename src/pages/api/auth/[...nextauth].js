@@ -8,21 +8,12 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      profile(profile) {
-        return profile
-      },
     })
   ],
-  session: {
-    strategy: 'jwt'
-  },
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      return true
+    async jwt({ token }) {
+      return token
     },
-    async redirect({ url, baseUrl }) {
-      return baseUrl
-    }
   }
 }
 

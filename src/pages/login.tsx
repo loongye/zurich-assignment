@@ -27,7 +27,7 @@ export default function Login() {
         {isAuthenticated ? (
           <>Redirecting to homepage</>
         ) : (
-          <button onClick={() => signIn("google")}>Login</button>
+          <button onClick={() => signIn()}>Login</button>
         )}
       </main>
       <Footer
