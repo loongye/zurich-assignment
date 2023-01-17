@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { signOut } from "next-auth/react";
 
 interface IHeaderProps {
   title: string;
@@ -15,6 +16,7 @@ export const Header: React.FC<IHeaderProps> = ({ title, description }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h2>{title}</h2>
+      <p>You are signed in. <button onClick={() => signOut()}>Sign Out</button></p>
     </>
   );
 };
